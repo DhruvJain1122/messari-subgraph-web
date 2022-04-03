@@ -70,8 +70,13 @@ function App() {
       "protocolTreasuryUSD",
       "feesUSD",
     ],
+    [
+      "totalUniqueUsers",
+      "dailyTransactionCount",
+      "activeUsers"
+    ]
   ];
-  const entities = ["financialsDailySnapshots"];
+  const entities = ["financialsDailySnapshots","usageMetricsDailySnapshots"];
   ChartJS.register(...registerables);
 
   const client = useMemo(
@@ -96,6 +101,11 @@ function App() {
         protocolControlledValueUSD
         protocolTreasuryUSD
         feesUSD
+      }
+      usageMetricsDailySnapshots {
+        totalUniqueUsers
+        dailyTransactionCount
+        activeUsers
       }
     }
   `;
