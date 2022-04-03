@@ -1,5 +1,5 @@
 import "./App.css";
-import { Button ,CircularProgress,Grid, TextField, Typography } from "@mui/material";
+import { Button, CircularProgress, Grid, TextField, Typography } from "@mui/material";
 import { ApolloClient, gql, InMemoryCache, useQuery } from "@apollo/client";
 import { Line } from "react-chartjs-2";
 import { Box } from "@mui/system";
@@ -9,7 +9,6 @@ import { useEffect, useMemo, useState } from "react";
 
 export const Chart = (datasetLabel: string, dataChart: any, dataLength: number) => {
   if (dataChart) {
-
     const labels = Array<string>(dataLength).fill("");
     const chartData = {
       labels,
@@ -100,7 +99,7 @@ function App() {
       }
     }
   `;
-  const { data, loading,error, refetch } = useQuery(subscription, { client });
+  const { data, loading, error, refetch } = useQuery(subscription, { client });
 
   useEffect(() => {
     refetch();
@@ -135,12 +134,12 @@ function App() {
     }, [data]);
   return (
     <div className="App">
-      <TextField sx={{maxWidth:800, marginY:2}} fullWidth onChange={(event) => setTextField(event.target.value)} />
+      <TextField sx={{ maxWidth: 800, marginY: 2 }} fullWidth onChange={(event) => setTextField(event.target.value)} />
 
       <Box marginTop={1}>
         <Button onClick={() => setSubgraphUrl(urlTextField)}>Show Graphs</Button>
       </Box>
-      {loading && !!subgraphUrl ? <CircularProgress sx={{ margin:6}} size={50}/>:null}
+      {loading && !!subgraphUrl ? <CircularProgress sx={{ margin: 6 }} size={50} /> : null}
       {error && !!subgraphUrl ? "Error Please check if you enter correct URL" : null}
       {AllData()}
     </div>
